@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#install and configure HAproxy on my server and distribute requests
+#install and configure HAproxy on my server
 
 apt-get update
 apt-get install -y haproxy
@@ -9,11 +9,6 @@ frontend http-in
 	bind *:80
 	mode http
 	default_backend student_server
-backend student_server
-	balance roundrobin
-	server 154650-web-01 
-        mode http
-        default_backend student_server
 backend student_server
         balance roundrobin
         server 154650-web-01 100.25.103.62:80 check
